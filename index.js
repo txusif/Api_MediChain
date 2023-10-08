@@ -2,24 +2,29 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Initialize an empty set to keep track of used endpoints
-const usedEndpoints = new Set();
-
 app.get("/:endpoint(doc\\d{4}|lab\\d{4})", (req, res) => {
   const endpoint = req.params.endpoint;
-
-  // Check if the endpoint has been used before
-  if (usedEndpoints.has(endpoint)) {
-    res.send({ res: 0 });
-  } else {
-    // Mark the endpoint as used
-    usedEndpoints.add(endpoint);
-    res.send({ res: 100 });
-  }
+  res.send({ res: 100 });
 });
 
+// // Initialize an empty set to keep track of used endpoints
+// const usedEndpoints = new Set();
+
+// app.get("/:endpoint(doc\\d{4}|lab\\d{4})", (req, res) => {
+//   const endpoint = req.params.endpoint;
+
+//   // Check if the endpoint has been used before
+//   if (usedEndpoints.has(endpoint)) {
+//     res.send({ res: 0 });
+//   } else {
+//     // Mark the endpoint as used
+//     usedEndpoints.add(endpoint);
+//     res.send({ res: 100 });
+//   }
+// });
+
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to MediChain registration Api</h1>");
+  res.send("<h2>Welcome to MediChain registration Api</h2>");
 });
 
 app.get("*", (req, res) => {
