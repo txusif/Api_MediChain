@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/:endpoint(doc\\d{4}|lab\\d{4})", (req, res) => {
+app.get("/:endpoint(dr\\d{4}|lab\\d{4})", (req, res) => {
   const endpoint = req.params.endpoint;
   res.send({ res: 100 });
 });
